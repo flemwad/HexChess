@@ -18,6 +18,14 @@ public class AssetLoader {
 	public static Texture mainmenu;
     public static Texture unittray;
     public static Texture footman;
+    public static Texture archer;
+    public static Texture king;
+    public static Texture queen;
+    public static Texture knight;
+    public static Texture mage;
+    public static Texture rogue;
+    public static Texture catapult;
+    public static Texture peasant;
 
 
     public static Skin uiSkin;
@@ -27,9 +35,6 @@ public class AssetLoader {
 	public static void load() {
 		tile = new Texture(Gdx.files.internal("data/tile.png"));
 		tile.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
-        
-		htile = new Texture(Gdx.files.internal("data/hightile.png"));
-		htile.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
 		
 		optgear = new Texture(Gdx.files.internal("data/optgear.png"));
 		optgear.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
@@ -46,8 +51,33 @@ public class AssetLoader {
         unittray = new Texture(Gdx.files.internal("data/tabletray.9.png"));
         unittray.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
 
+        archer = new Texture(Gdx.files.internal("data/archer.png"));
+        archer.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+
+        //TODO: Use TexturePacker and Atlas files to read these all out of a single png of tiles
         footman = new Texture(Gdx.files.internal("data/footman.png"));
         footman.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+
+        king = new Texture(Gdx.files.internal("data/king.png"));
+        king.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+
+        queen = new Texture(Gdx.files.internal("data/queen.png"));
+        queen.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+
+        knight = new Texture(Gdx.files.internal("data/knight.png"));
+        knight.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+
+        mage = new Texture(Gdx.files.internal("data/mage.png"));
+        mage.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+
+        rogue = new Texture(Gdx.files.internal("data/rogue.png"));
+        rogue.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+
+        catapult = new Texture(Gdx.files.internal("data/catapult.png"));
+        catapult.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
+
+        peasant = new Texture(Gdx.files.internal("data/peasant.png"));
+        peasant.setFilter(TextureFilter.Nearest, TextureFilter.Nearest);
 
         font = new BitmapFont();
         uiSkin = new Skin(Gdx.files.internal("data/uiskin.json"));
@@ -62,8 +92,17 @@ public class AssetLoader {
 		trialbg.dispose();
 		mainmenu.dispose();
         unittray.dispose();
-        footman.dispose();
         font.dispose();
         uiSkin.dispose();
+
+        footman.dispose();
+        archer.dispose();
+        mage.dispose();
+        king.dispose();
+        queen.dispose();
+        catapult.dispose();
+        peasant.dispose();
+        rogue.dispose();
+        knight.dispose();
     }
 }

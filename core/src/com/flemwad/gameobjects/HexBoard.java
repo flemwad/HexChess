@@ -3,8 +3,16 @@ package com.flemwad.gameobjects;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
+import com.flemwad.gameobjects.tiles.ArcherTile;
+import com.flemwad.gameobjects.tiles.CatapultTile;
 import com.flemwad.gameobjects.tiles.FootmanTile;
 import com.flemwad.gameobjects.tiles.GrassTile;
+import com.flemwad.gameobjects.tiles.KingTile;
+import com.flemwad.gameobjects.tiles.KnightTile;
+import com.flemwad.gameobjects.tiles.MageTile;
+import com.flemwad.gameobjects.tiles.PeasantTile;
+import com.flemwad.gameobjects.tiles.QueenTile;
+import com.flemwad.gameobjects.tiles.RogueTile;
 import com.flemwad.gameobjects.tiles.TileGridCell;
 import com.flemwad.gameworld.GameRenderer;
 import com.flemwad.gameworld.GameWorld;
@@ -121,34 +129,64 @@ public class HexBoard {
         return null;
     }
 
-    public boolean dropUnit(String name, int x, int y) {
+    public void prepDropUnit(String name, int x, int y) {
         switch(GameWorld.ButtonName.valueOf(name)) {
             case footman:
-                dropFootman(name, x, y);
+                FootmanTile footTile = new FootmanTile(tileRadius);
+                dropToBoard(footTile, x, y);
+                break;
+            case archer:
+                ArcherTile archTile = new ArcherTile(tileRadius);
+                dropToBoard(archTile, x, y);
+                break;
+            case king:
+                KingTile kingTile = new KingTile(tileRadius);
+                dropToBoard(kingTile, x, y);
+                break;
+            case queen:
+                QueenTile queenTile = new QueenTile(tileRadius);
+                dropToBoard(queenTile, x, y);
+                break;
+            case mage:
+                MageTile mageTile = new MageTile(tileRadius);
+                dropToBoard(mageTile, x, y);
+                break;
+            case rogue:
+                RogueTile rogueTile = new RogueTile(tileRadius);
+                dropToBoard(rogueTile, x, y);
+                break;
+            case catapult:
+                CatapultTile catTile = new CatapultTile(tileRadius);
+                dropToBoard(catTile, x, y);
+                break;
+            case knight:
+                KnightTile knightTile = new KnightTile(tileRadius);
+                dropToBoard(knightTile, x, y);
+                break;
+            case peasant:
+                PeasantTile peasTile = new PeasantTile(tileRadius);
+                dropToBoard(peasTile, x, y);
                 break;
             default:
                 Gdx.app.log("my app", "Couldn't drop drag unit " + name);
                 break;
         }
-
-        return true;
     }
 
-    public void dropFootman(String name, int x, int y) {
-        FootmanTile footTile = new FootmanTile(tileRadius);
+    public void dropToBoard(TileGridCell dropCell, int x, int y) {
         TileGridCell dropTile = getDroppedTile(x, y);
 
         if(dropTile != null) {
             Gdx.app.log("my app", "dropTile id is: " + dropTile.id);
 
-            footTile.setId(dropTile.id);
-            footTile.setCellIndex(dropTile.getIndexI(), dropTile.getIndexJ());
-            footTile.computeCorners(mCornersx, mCornersy);
+            dropCell.setId(dropTile.id);
+            dropCell.setCellIndex(dropTile.getIndexI(), dropTile.getIndexJ());
+            dropCell.computeCorners(mCornersx, mCornersy);
 
             tileMap.remove(dropTile.id);
-            tileMap.add(dropTile.id, footTile);
+            tileMap.add(dropTile.id, dropCell);
 
-            dropTile = null;
+            //dropTile = null;
         }
     }
     

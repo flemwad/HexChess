@@ -136,7 +136,7 @@ public class HCImageButton implements ApplicationListener {
 
     @Override
     public void create() {
-        buttonsAtlas = new TextureAtlas("data/hexchess.pack");
+        buttonsAtlas = new TextureAtlas("data/hexchess.atlas");
         buttonSkin = new Skin();
         buttonSkin.addRegions(buttonsAtlas);
 

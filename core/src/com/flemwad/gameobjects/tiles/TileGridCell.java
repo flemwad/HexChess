@@ -68,6 +68,12 @@ public class TileGridCell {
         type = value;
     }
 
+    public void setId(int value) {
+        id = value;
+    }
+
+    public int getId() { return id; }
+
     /**
      * @return X coordinate of the cell's top left corner.
      */

@@ -1,6 +1,5 @@
 package com.flemwad.gameworld;
 
-import com.badlogic.gdx.Gdx;
 import com.flemwad.gameobjects.HexBoard;
 import com.flemwad.gameobjects.tiles.TileGridCell;
 import com.flemwad.hexchess.HCGame;
@@ -12,7 +11,7 @@ public class GameWorld {
     }
 
     public enum ButtonName {
-        optgear, btnexit, footman
+        optgear, btnexit, footman, archer, king, queen, mage, rogue, catapult, knight, peasant
     }
 
     private HCGame theGame;
@@ -41,7 +40,6 @@ public class GameWorld {
     public void updateSetup(float delta) {
         //System.out.println("GameWorld - updateSetup");
         gameState = GameState.Setup;
-
     }
 	
 	public void updatePaused(float delta) {
@@ -81,8 +79,6 @@ public class GameWorld {
         gameBoard.setRenderer(renderer);
     }
 
-
-
     public void buttonInput(String name, float x, float y) {
         switch (ButtonName.valueOf(name)) {
             case optgear:
@@ -97,19 +93,8 @@ public class GameWorld {
     }
 
     public void handleUnitDrop(String buttonName, int x, int y) {
-        handleNewDragUnit(buttonName);
-        gameBoard.dropUnit(buttonName, x, y);
-    }
-
-    public void handleNewDragUnit(String buttonName) {
-        switch(ButtonName.valueOf(buttonName)) {
-            case footman:
-                renderer.createFootmanDrag();
-                break;
-            default:
-                Gdx.app.log("my app", "Couldn't create new drag unit " + buttonName);
-                break;
-        }
+        renderer.createUnitDrags(); //recreate the whole unit tray and contents
+        gameBoard.prepDropUnit(buttonName, x, y);
     }
 
     public void backToMainMainu() {

@@ -1,10 +1,10 @@
 package com.flemwad.gameobjects.tiles;
 
-public class FootmanTile extends TileGridCell {
+public class CatapultTile extends TileGridCell {
 
-    public String type = "footman";
+    public String type = "catapult";
 
-    public FootmanTile(int radius) {
+    public CatapultTile (int radius) {
         super(radius);
         super.setType(type);
     }
